@@ -1,8 +1,10 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
+@Injectable()
 export class RecipeService {
     recipeSelected = new EventEmitter<Recipe>();
 
@@ -17,8 +19,8 @@ export class RecipeService {
                         new Ingredient('Mushrooms', 5),
                         new Ingredient('Tomatoes', 5)
                     ]),
-        new Recipe('Meat with salafd',
-                   'New recipe',
+        new Recipe('Meat with salad',
+                   'Made wtih a new recipe',
                    // tslint:disable-next-line:max-line-length
                    'https://cook.fnr.sndimg.com/content/dam/images/cook/fullset/2012/1/26/0/Simple-Asian_Salmon_s3x4.jpg.rend.hgtvcom.616.462.suffix/1358484192681.jpeg',
                     [
@@ -29,7 +31,13 @@ export class RecipeService {
                     ])
     ];
 
+    constructor(private slService: ShoppingListService) {}
+
     getRecipes() {
         return this.recipes.slice();
+    }
+
+    addIngredientsToShoppingList(ingredients: Ingredient[]) {
+        this.slService.addIngredients(ingredients);
     }
 }
