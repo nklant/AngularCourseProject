@@ -15,7 +15,7 @@ export class RecipeService {
                         new Ingredient('Mince', 1),
                         new Ingredient('Salad', 20),
                         new Ingredient('Mushrooms', 5),
-                        new Ingredient('Tomatos', 5)
+                        new Ingredient('Tomatoes', 5)
                     ]),
         new Recipe('Meat with salafd',
                    'New recipe',
