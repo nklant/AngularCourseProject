@@ -1,3 +1,2 @@
-<p>
-  recipe-edit works!
-</p>
+<p *ngIf="editMode; else elseBlock">Recipe Edit Works!</p>
+<ng-template #elseBlock>Recipe New Works!</ng-template>
