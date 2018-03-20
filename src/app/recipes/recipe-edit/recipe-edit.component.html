@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" *ngIf="imagePath.value">
                 <div class="col-xs-12">
                     <label for="imagePreview">Image Preview</label>
                     <img [src]="imagePath.value" class="img-responsive" style="max-height: 200px;">
