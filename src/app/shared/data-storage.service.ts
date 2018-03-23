@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
+// tslint:disable-next-line:import-blacklist
+import 'rxjs/Rx';
 
 import { RecipeService } from '../recipes/recipe.service';
 import { Recipe } from '../recipes/recipe.model';
@@ -22,7 +23,7 @@ export class DataStorageService {
                     // tslint:disable-next-line:prefer-const
                     for (let recipe of recipes) {
                         if (!recipe['ingredients']) {
-                            console.log(recipe);
+                            // console.log(recipe);
                             recipe['ingredients'] = [];
                         }
                     }
