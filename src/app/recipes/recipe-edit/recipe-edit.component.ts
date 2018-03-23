@@ -25,7 +25,7 @@ export class RecipeEditComponent implements OnInit {
           this.id = +params['id'];
           // this.editMode = params['id'] != null; // Same shit as below
           this.editMode = params['id'] ? true : false;
-          console.log('Edit mode: ' + this.editMode);
+          // console.log('Edit mode: ' + this.editMode);
           this.initForm();
         }
       );
