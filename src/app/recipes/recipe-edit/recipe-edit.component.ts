@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { AlertsService } from 'angular-alert-module';
 
 import { RecipeService } from '../recipe.service';
 
@@ -16,6 +17,7 @@ export class RecipeEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private recipeService: RecipeService,
+              private alert: AlertsService,
               private router: Router) { }
 
   ngOnInit() {
@@ -41,8 +43,10 @@ export class RecipeEditComponent implements OnInit {
     // );
     if (this.editMode) {
       this.recipeService.updateRecipe(this.id, this.recipeForm.value); // this.recipeForm.value, instead of newRecipe
+      this.alert.setMessage('Recipe has been updated!', 'success');
     } else {
       this.recipeService.addRecipe(this.recipeForm.value);
+      this.alert.setMessage('Recipe has been added!', 'success');
     }
     // this.router.navigate(['../'], {relativeTo: this.route}); // or just use this below
     this.onCancel();
