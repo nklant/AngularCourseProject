@@ -34,8 +34,8 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
     RecipesModule,
+    AppRoutingModule,
     SharedModule,
     AlertsModule.forRoot()
   ],
