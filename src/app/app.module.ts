@@ -23,6 +23,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth-guard.service';
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { AuthService } from './auth/auth.service';
     AppRoutingModule,
     AlertsModule.forRoot()
   ],
-  providers: [ShoppingListService, RecipeService, DataStorageService, AuthService],
+  providers: [ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

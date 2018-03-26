@@ -3,6 +3,7 @@ import { Response } from '@angular/http';
 import { AlertsService } from 'angular-alert-module';
 
 import { DataStorageService } from '../shared/data-storage.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
     selector: 'app-header',
@@ -10,13 +11,14 @@ import { DataStorageService } from '../shared/data-storage.service';
 })
 export class HeaderComponent {
     constructor(private dataStorageService: DataStorageService,
+                private authService: AuthService,
                 private alert: AlertsService) {}
 
     onSaveData() {
         this.dataStorageService.storeRecipes()
             .subscribe(
                 (response: Response) => {
-                    // console.log(response);
+                    console.log(response);
                 }
             );
         this.alert.setMessage('Data has been saved!', 'success');
@@ -25,5 +27,9 @@ export class HeaderComponent {
     onFetchData() {
         this.dataStorageService.getRecipes();
         this.alert.setMessage('Data has been fetched!', 'success');
+    }
+
+    onLogout() {
+        this.authService.logout();
     }
 }
