@@ -3,9 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HomeComponent } from './core/home/home.component';
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+    { path: '', component: HomeComponent },
+    { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' },
     { path: 'shopping-list', component: ShoppingListComponent }
     // { path: 'not-found', component: PageNotFoundComponent },
     // { path: '**', redirectTo: '/not-found' }
