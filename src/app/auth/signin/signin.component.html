@@ -1,5 +1,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h4><strong><u>Log in:</u></strong></h4>
+      <br>
       <form (ngSubmit)="onSignin(f)" #f="ngForm">
         <div class="form-group">
           <label for="email">Mail</label>
@@ -8,7 +10,7 @@
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" ngModel class="form-control">
-            <span>*At least 6 symbols</span>
+            <br>
           </div>
           <button class="btn btn-primary" type="submit">Sign In</button>
       </form>

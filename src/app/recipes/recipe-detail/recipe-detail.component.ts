@@ -4,6 +4,7 @@ import { AlertsService } from 'angular-alert-module';
 
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -17,7 +18,8 @@ export class RecipeDetailComponent implements OnInit {
   constructor(private recipeService: RecipeService,
               private route: ActivatedRoute,
               private alert: AlertsService,
-              private router: Router) { }
+              private router: Router,
+              public authService: AuthService) { }
 
   ngOnInit() {
     this.route.params.subscribe(

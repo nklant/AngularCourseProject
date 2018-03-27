@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -13,10 +14,12 @@ import { RecipeService } from '../recipe.service';
 export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[];
   subscription: Subscription;
+  warn = false;
 
   constructor(private recipeService: RecipeService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              public authService: AuthService) { }
 
   ngOnInit() {
     this.subscription = this.recipeService.recipesChanged
@@ -29,6 +32,10 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   }
 
   onNewRecipe() {
+    if (!this.authService.isAuthenticated()) {
+      this.warn = true;
+    }
+
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 
